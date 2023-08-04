@@ -1,5 +1,6 @@
 package com.spingmongo.mongodb.rosources;
 
+import com.spingmongo.mongodb.domain.Post;
 import com.spingmongo.mongodb.domain.User;
 import com.spingmongo.mongodb.dto.UserDTO;
 import com.spingmongo.mongodb.service.UserService;
@@ -48,5 +49,9 @@ public class UseResource {
         obj = userService.update(obj);
         return ResponseEntity.noContent().build();
     }
-
+    @GetMapping(value = "/{id}/posts")
+    public ResponseEntity<List<Post>> findPosts(@PathVariable String id){
+        User user = userService.findById(id);
+        return ResponseEntity.ok().body(user.getPosts());
+    }
 }
