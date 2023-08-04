@@ -3,6 +3,7 @@ package com.spingmongo.mongodb.config;
 import com.spingmongo.mongodb.domain.Post;
 import com.spingmongo.mongodb.domain.User;
 import com.spingmongo.mongodb.dto.AuthorDto;
+import com.spingmongo.mongodb.dto.ComentDTO;
 import com.spingmongo.mongodb.repository.PostRepository;
 import com.spingmongo.mongodb.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,6 +43,12 @@ public class Instantiation implements CommandLineRunner {
 
         Post post1 = new Post(null, sdf.parse("21/03/2018"), "Partiu viagem", "Vou viajar para são paulo", new AuthorDto(maria));
         Post post2 = new Post(null, sdf.parse("25/08/2023"), "Partiu slz", "Vou viajar para o Maranhão", new AuthorDto(maria));
+
+        ComentDTO c1 = new ComentDTO("Boa viagem mano!",sdf.parse("21/03/2018"), new AuthorDto(alex) );
+        ComentDTO c2 = new ComentDTO("Aproveite",sdf.parse("21/03/2018"), new AuthorDto(maria) );
+
+        post1.getComents().addAll(Arrays.asList(c1));
+        post2.getComents().addAll(Arrays.asList(c2));
 
         postRepository.saveAll(Arrays.asList(post1, post2));
 
