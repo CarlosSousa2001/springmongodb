@@ -1,7 +1,7 @@
 # springmongodb
 projeto com springboot e mongodb
 # funcionalidades
-- usuário podem enviar posts
+- usuários podem enviar posts
 - posts podem ter comentários
 - os comentários possuem autores
 # estrutra das classes
